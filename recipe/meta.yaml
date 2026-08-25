@@ -6,13 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | lower }}-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | lower }}-{{ version }}.tar.gz
   sha256: 8a6287c6066416d6c012a0ddd5142de304fe60a3dc9da1417ada1f2ccf63ebd7
   patches:
     - 0001-Cython-is-not-a-runtime-dependency.patch
 
 build:
-  number: 4
+  number: 5
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv --global-option=build_ext --global-option=-I$PREFIX/include
   entry_points:
     - bonsu = bonsu.interface.bonsu:main
